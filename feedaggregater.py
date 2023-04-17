@@ -9,9 +9,14 @@ response = requests.get(
 
 otc_feed = feedparser.parse(response.content.decode('utf-8'))
 
+data = []
 for entry in otc_feed.entries:
-    title = entry.title
-    link = entry.link
-    symbol = entry.pink_symbol
-    type = entry.pink_type
-    print(title, link)
+    data.append({
+        'title': entry.title,
+        'link': entry.link,
+        'symbol': entry.pink_symbol,
+        'type': entry.pink_type,
+    })
+
+df = pd.DataFrame(data)
+print(df.head(15))
