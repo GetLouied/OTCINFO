@@ -13,7 +13,7 @@ c.execute('''CREATE TABLE IF NOT EXISTS rss_feed (
                 symbol TEXT,
                 type TEXT,
                 tier TEXT,
-                pubdate TEXT,
+                date TEXT,
                 title TEXT,
                 link TEXT
             )''')
@@ -25,10 +25,9 @@ while True:
     parsed_data = parser.parsed_data 
 
     if parsed_data:
-        print("Parsed data:", parsed_data)  # Print the parsed data
 
         for item in parsed_data:
-            c.execute("INSERT INTO rss_feed (symbol, type, tier, pubdate, title, link) VALUES (?, ?, ?, ?, ?, ?)", (
+            c.execute("INSERT INTO rss_feed (symbol, type, tier, date, title, link) VALUES (?, ?, ?, ?, ?, ?)", (
                 item['symbol'],
                 item['type'],
                 item['tier'],
@@ -38,7 +37,6 @@ while True:
             ))
 
         conn.commit()
-        print("Data inserted successfully!")
     else:
         print("No data to insert.")
 

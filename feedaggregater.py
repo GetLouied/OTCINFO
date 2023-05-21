@@ -38,6 +38,7 @@ class RSSFeedParser:
             entries = self.fetch_feed()
             data = self.parse_entries(entries)
             self.parsed_data.extend(data)
+            return data
             time.sleep(300) 
 
 
