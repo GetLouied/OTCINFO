@@ -17,9 +17,9 @@ class RSSFeedParser:
 
     def parse_entries(self, entries):
         data = []
-        parsed_ids = set()  # Set to store unique identifiers of parsed entries
+        parsed_ids = set()
         for entry in entries:
-            entry_id = entry.get('link')  # Replace 'unique_identifier' with the appropriate field
+            entry_id = entry.get('link')
             if entry_id not in parsed_ids:
                 data.append({
                     'symbol': entry.get('pink_symbol'),
@@ -38,7 +38,7 @@ class RSSFeedParser:
             entries = self.fetch_feed()
             data = self.parse_entries(entries)
             self.parsed_data.extend(data)
-            time.sleep(300)  # Reduce the sleep duration for debugging
+            time.sleep(300) 
 
 
 

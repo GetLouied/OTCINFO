@@ -22,7 +22,7 @@ conn.commit()
 
 while True:
     parser.run()
-    parsed_data = parser.parsed_data  # Access the parsed data from the instance variable
+    parsed_data = parser.parsed_data 
 
     if parsed_data:
         print("Parsed data:", parsed_data)  # Print the parsed data
@@ -42,10 +42,9 @@ while True:
     else:
         print("No data to insert.")
 
-    # Clear the parsed data to avoid duplicate entries
     parser.parsed_data = []
 
-    time.sleep(5)  # Adjust the sleep duration as needed
+    time.sleep(5)
 
 conn.close()
 
