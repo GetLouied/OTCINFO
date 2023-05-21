@@ -1,7 +1,10 @@
-from fastapi import FastAPI
+from fastapi import APIRouter
 import sqlite3
 
-app = FastAPI()
+router = APIRouter(
+prefix='/alerts',
+tags = ['alerts']
+)
 
 # Function to retrieve alerts from the database
 def get_alerts():
@@ -17,12 +20,9 @@ def get_alerts():
         return []
 
 # API route to get alerts
-@app.get("/alerts")
+@router.get('/')
 async def alerts():
     alerts = get_alerts()
     return {"alerts": alerts}
 
-# Main entry point
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run("alerts:app", host="0.0.0.0", port=8000)
+
