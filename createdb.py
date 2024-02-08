@@ -8,7 +8,6 @@ parser = RSSFeedParser(url)
 conn = sqlite3.connect('rss_feed.db')
 c = conn.cursor()
 
-# Create a table
 c.execute('''CREATE TABLE IF NOT EXISTS rss_feed (
                 symbol TEXT,
                 type TEXT,
@@ -27,6 +26,7 @@ while True:
     if parsed_data:
 
         for item in parsed_data:
+            print(item)
             c.execute("INSERT INTO rss_feed (symbol, type, tier, date, title, link) VALUES (?, ?, ?, ?, ?, ?)", (
                 item['symbol'],
                 item['type'],
@@ -45,9 +45,6 @@ while True:
     time.sleep(5)
 
 conn.close()
-
-
-
 
 
 

@@ -3,7 +3,6 @@ import alerts
 
 app = FastAPI()
 app.include_router(alerts.router)
-
     
 if __name__ == "__main__":
     import uvicorn
